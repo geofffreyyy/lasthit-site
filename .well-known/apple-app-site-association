@@ -1,0 +1,14 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "BDS2QJ2F8T.com.geof973.lasthit",
+        "paths": [
+          "/join/*",
+          "/invite/*"
+        ]
+      }
+    ]
+  }
+}

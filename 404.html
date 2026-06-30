@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Join LastHit</title>
+  <meta name="description" content="Open this LastHit invite or download LastHit from the App Store.">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #1c1210;
+      --card: rgba(255, 255, 255, 0.08);
+      --stroke: rgba(255, 255, 255, 0.14);
+      --text: #fff8f2;
+      --muted: rgba(255, 248, 242, 0.7);
+      --accent: #f0a66f;
+      --secondary: rgba(255, 255, 255, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background:
+        radial-gradient(circle at 18% 0%, rgba(240, 166, 111, 0.26), transparent 32%),
+        radial-gradient(circle at 100% 100%, rgba(171, 116, 255, 0.12), transparent 30%),
+        linear-gradient(145deg, #120d0d, var(--bg));
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+    }
+
+    main {
+      width: min(460px, 100%);
+      padding: 28px;
+      border: 1px solid var(--stroke);
+      border-radius: 30px;
+      background: var(--card);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(20px);
+    }
+
+    .icon {
+      width: 64px;
+      height: 64px;
+      display: grid;
+      place-items: center;
+      border-radius: 20px;
+      background: rgba(240, 166, 111, 0.16);
+      color: var(--accent);
+      font-size: 30px;
+      font-weight: 800;
+    }
+
+    h1 {
+      margin: 22px 0 10px;
+      font-size: 36px;
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.45;
+    }
+
+    .code {
+      margin: 0 0 18px;
+      padding: 14px 16px;
+      border: 1px solid var(--stroke);
+      border-radius: 18px;
+      color: var(--text);
+      background: rgba(0, 0, 0, 0.18);
+      font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+      overflow-wrap: anywhere;
+    }
+
+    .actions {
+      display: grid;
+      gap: 12px;
+    }
+
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 54px;
+      border-radius: 18px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 17px;
+    }
+
+    .primary {
+      color: #1d120d;
+      background: var(--accent);
+    }
+
+    .secondary {
+      color: var(--text);
+      background: var(--secondary);
+      border: 1px solid var(--stroke);
+    }
+
+    small {
+      display: block;
+      margin-top: 16px;
+      color: rgba(255, 248, 242, 0.52);
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="icon">LH</div>
+    <h1>Join this LastHit group</h1>
+    <p>If LastHit is installed, open the invite directly. If not, download the app and come back to this link.</p>
+    <div class="code" id="invite-code">Invite link loading...</div>
+    <div class="actions">
+      <a class="primary" id="open-link" href="https://lasthit.app">Open in LastHit</a>
+      <a class="secondary" id="download-link" href="https://apps.apple.com/app/id6785927095">Download on the App Store</a>
+    </div>
+    <small>Replace the App Store search URL in this page with the final LastHit App Store URL once App Store Connect gives you the app ID.</small>
+  </main>
+
+  <script>
+    const APP_STORE_URL = "https://apps.apple.com/app/id6785927095";
+
+    function inviteCodeFromPath() {
+      const parts = window.location.pathname.split("/").filter(Boolean);
+      const markerIndex = parts.findIndex((part) => ["join", "invite"].includes(part.toLowerCase()));
+      if (markerIndex >= 0 && parts[markerIndex + 1]) {
+        return parts[markerIndex + 1].replace(/[^a-zA-Z0-9_-]/g, "");
+      }
+      const params = new URLSearchParams(window.location.search);
+      return (params.get("code") || params.get("invite") || "").replace(/[^a-zA-Z0-9_-]/g, "");
+    }
+
+    const inviteCode = inviteCodeFromPath();
+    const openLink = document.getElementById("open-link");
+    const downloadLink = document.getElementById("download-link");
+    const codeLabel = document.getElementById("invite-code");
+
+    downloadLink.href = APP_STORE_URL;
+
+    if (inviteCode) {
+      const deepLink = `lasthit://join/${inviteCode}`;
+      openLink.href = deepLink;
+      codeLabel.textContent = `Invite code: ${inviteCode}`;
+    } else {
+      openLink.href = "lasthit://";
+      codeLabel.textContent = "Open LastHit to join your group.";
+    }
+
+    window.setTimeout(() => {
+      window.location.href = APP_STORE_URL;
+    }, 1800);
+  </script>
+</body>
+</html>
