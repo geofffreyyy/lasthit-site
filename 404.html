@@ -46,15 +46,13 @@
     }
 
     .icon {
-      width: 64px;
-      height: 64px;
-      display: grid;
-      place-items: center;
+      width: 76px;
+      height: 76px;
+      display: block;
       border-radius: 20px;
-      background: rgba(240, 166, 111, 0.16);
-      color: var(--accent);
-      font-size: 30px;
-      font-weight: 800;
+      object-fit: cover;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.5);
     }
 
     h1 {
@@ -119,15 +117,15 @@
 </head>
 <body>
   <main>
-    <div class="icon">LH</div>
-    <h1>Join this LastHit group</h1>
-    <p>If LastHit is installed, open the invite directly. If not, download the app and come back to this link.</p>
-    <div class="code" id="invite-code">Invite link loading...</div>
+    <img class="icon" src="data:image/jpeg;base64,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" alt="LastHit" width="76" height="76">
+    <h1>You're invited to LastHit</h1>
+    <p>Opening LastHit to join the group… If nothing happens, use a button below.</p>
+    <div class="code" id="invite-code">Loading your invite…</div>
     <div class="actions">
-      <a class="primary" id="open-link" href="https://lasthit.app">Open in LastHit</a>
-      <a class="secondary" id="download-link" href="https://apps.apple.com/app/id6785927095">Download on the App Store</a>
+      <a class="primary" id="open-link" href="https://apps.apple.com/app/id6785927095">Open in LastHit</a>
+      <a class="secondary" id="download-link" href="https://apps.apple.com/app/id6785927095">Get LastHit on the App Store</a>
     </div>
-    <small>Replace the App Store search URL in this page with the final LastHit App Store URL once App Store Connect gives you the app ID.</small>
+    <small>Have the app? Tap “Open in LastHit”. New here? Get it on the App Store, then reopen this link to join.</small>
   </main>
 
   <script>
@@ -150,18 +148,29 @@
 
     downloadLink.href = APP_STORE_URL;
 
-    if (inviteCode) {
-      const deepLink = `lasthit://join/${inviteCode}`;
-      openLink.href = deepLink;
-      codeLabel.textContent = `Invite code: ${inviteCode}`;
-    } else {
-      openLink.href = "lasthit://";
-      codeLabel.textContent = "Open LastHit to join your group.";
-    }
+    const deepLink = inviteCode ? `lasthit://join/${inviteCode}` : "lasthit://";
+    openLink.href = deepLink;
+    codeLabel.textContent = inviteCode
+      ? `Invite code: ${inviteCode}`
+      : "Open LastHit to join your group.";
 
+    // If the app opens, the page is backgrounded — track that so we don't then
+    // bounce an installed user to the App Store.
+    let appOpened = false;
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "hidden") appOpened = true;
+    });
+
+    // Try to hand off to the app (covers users who reached this page instead of
+    // being intercepted by the universal link, e.g. right after install).
+    window.setTimeout(() => { window.location.href = deepLink; }, 350);
+
+    // Still here after a moment? The app isn't installed — send them to get it.
     window.setTimeout(() => {
-      window.location.href = APP_STORE_URL;
-    }, 1800);
+      if (!appOpened && document.visibilityState === "visible") {
+        window.location.href = APP_STORE_URL;
+      }
+    }, 2500);
   </script>
 </body>
 </html>
