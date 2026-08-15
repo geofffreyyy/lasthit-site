@@ -98,6 +98,56 @@ const copy = {
     changesTitle: "Modifications et contact",
     changesBody: "Cette politique peut évoluer avec LastHit. Sa date d'entrée en vigueur sera mise à jour ici. Les questions relatives à la confidentialité peuvent être envoyées à supportgeof973@gmail.com.",
     rights: "Tous droits réservés."
+  },
+  es: {
+    support: "Soporte",
+    privacy: "Privacidad",
+    appName: "LastHit - Keep the Streak",
+    headline: "Soporte y privacidad, sin complicaciones.",
+    intro: "Encuentra respuestas, contacta con soporte, entiende cómo se tratan tus datos o aprende a eliminar tu cuenta.",
+    contactSupport: "Contactar con soporte",
+    appStore: "Ver en la App Store",
+    helpEyebrow: "Ayuda",
+    supportTitle: "Soporte de LastHit",
+    supportIntro: "Cuéntanos qué pasó e incluye el modelo de tu iPhone y la versión de iOS al informar de un error.",
+    emailLabel: "Correo de soporte",
+    replyTime: "Normalmente respondemos en un plazo de dos días laborables. El soporte está disponible en inglés y francés.",
+    faqSyncQuestion: "¿Por qué no se actualiza mi grupo?",
+    faqSyncAnswer: "Comprueba que iCloud Drive esté activado, que LastHit pueda usar iCloud y que ambos teléfonos tengan conexión a internet. Vuelve a abrir la pantalla Grupos para actualizar.",
+    faqInviteQuestion: "¿Cómo me uno a un grupo?",
+    faqInviteAnswer: "Toca un enlace de invitación de LastHit, o abre Grupos y elige «Unirse a un grupo con código». Pega el código de invitación y confirma.",
+    faqNotificationQuestion: "¿Por qué no recibo notificaciones?",
+    faqNotificationAnswer: "Abre Ajustes en el iPhone, elige Notificaciones y luego LastHit. Activa Permitir notificaciones, Pantalla bloqueada y Sonidos. El estilo de notificación que elijas en LastHit se aplica a las alertas de hit del grupo.",
+    faqProfileQuestion: "¿Cómo actualizo mi nombre o mi foto?",
+    faqProfileAnswer: "Abre tu perfil desde el avatar de la esquina superior derecha. Los cambios se sincronizan con los miembros de tu grupo a través de iCloud.",
+    accountEyebrow: "Control de la cuenta",
+    deleteTitle: "Eliminar tu cuenta de LastHit",
+    deleteIntro: "Puedes eliminar tu cuenta permanentemente directamente dentro de LastHit:",
+    deleteStep1: "Abre LastHit y toca tu foto de perfil.",
+    deleteStep2: "Desplázate hasta la sección Cuenta.",
+    deleteStep3: "Toca Eliminar cuenta y confirma.",
+    deleteEffect: "Esto elimina de iCloud tu perfil, tu ID de LastHit reservado, tus hits, tus membresías de grupo y los grupos que creaste. La acción no se puede deshacer.",
+    deleteHelp: "Si no puedes acceder a la app, escribe a soporte desde la dirección anterior y describe la cuenta que quieres eliminar.",
+    privacyEyebrow: "En vigor el 30 de junio de 2026",
+    privacyTitle: "Política de privacidad",
+    privacyIntro: "LastHit se basa en grupos privados y en decisiones claras sobre lo que compartes.",
+    collectTitle: "Información que tratamos",
+    collectBody: "LastHit trata tu nombre visible y tu ID único, tu foto de perfil opcional, el historial de hits y rachas, tus membresías de grupo y la información de lugar opcional que decidas asociar a un hit.",
+    purposeTitle: "Cómo se usa",
+    purposeBody: "Esta información se usa únicamente para ofrecer las funciones de la app: sincronizar tu perfil, calcular estadísticas, mostrar la actividad y las clasificaciones del grupo, enviar notificaciones y mostrar los lugares compartidos.",
+    storageTitle: "Almacenamiento y uso compartido",
+    storageBody: "Los datos se almacenan en tu dispositivo y en Apple CloudKit. La información del grupo se comparte solo a través de LastHit con los miembros de los grupos a los que te unes, según tus opciones de privacidad y de compartir lugares.",
+    trackingTitle: "Seguimiento y publicidad",
+    trackingBody: "LastHit no usa SDK de publicidad, análisis de terceros, seguimiento entre apps ni intermediarios de datos. No vendemos información personal.",
+    permissionsTitle: "Permisos del dispositivo",
+    permissionsBody: "La ubicación se solicita solo cuando decides asociar tu lugar actual a un hit. El acceso a fotos usa el selector del sistema de Apple cuando eliges una imagen de perfil. Las notificaciones son opcionales y se pueden desactivar en los Ajustes del iPhone.",
+    retentionTitle: "Conservación y eliminación",
+    retentionBody: "La información permanece disponible mientras tu cuenta esté activa. Puedes eliminar hits individuales o eliminar tu cuenta permanentemente en la app. La eliminación de la cuenta borra los datos de CloudKit asociados como se describe arriba.",
+    appleTitle: "Servicios de Apple",
+    appleBody: "LastHit se apoya en servicios de Apple, incluidos iCloud, CloudKit, el servicio de notificaciones push de Apple y la App Store. Apple trata la información según su propia política de privacidad.",
+    changesTitle: "Cambios y contacto",
+    changesBody: "Podemos actualizar esta política cuando LastHit cambie. La fecha de entrada en vigor se actualizará aquí. Las preguntas sobre privacidad se pueden enviar a supportgeof973@gmail.com.",
+    rights: "Todos los derechos reservados."
   }
 };
 
@@ -120,5 +170,10 @@ document.querySelectorAll("[data-language-button]").forEach((button) => {
 });
 
 const savedLanguage = localStorage.getItem("lasthit-language");
-const browserLanguage = navigator.language.toLowerCase().startsWith("fr") ? "fr" : "en";
+const browserLanguage = (() => {
+  const language = navigator.language.toLowerCase();
+  if (language.startsWith("fr")) return "fr";
+  if (language.startsWith("es")) return "es";
+  return "en";
+})();
 setLanguage(savedLanguage || browserLanguage);
