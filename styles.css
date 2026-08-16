@@ -113,8 +113,9 @@ summary:focus-visible {
 }
 
 .language-switch {
-  display: inline-grid;
-  grid-template-columns: 1fr 1fr;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
   padding: 3px;
   border: 1px solid var(--border);
   border-radius: 8px;
